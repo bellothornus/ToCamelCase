@@ -6,13 +6,18 @@ def to_camel_case(text):
     i = 0
     first = 0
     for character in text:
-        if character != "-" or character != "_":
+        if len(text) == i+1:
+            answer += text[i-is_character].upper()
+            answer += text[(i-is_character)+1:]
+        if character != "-" and character != "_":
             is_character += 1
             i += 1
         else:
             if first == 0:
                 first += 1
                 is_character = 0
+                i += 1
+                answer += text[:i-1]
                 continue
             else:
                 answer += text[i-is_character].upper()
